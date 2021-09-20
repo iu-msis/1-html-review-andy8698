@@ -13,6 +13,9 @@
 
   <script src="https://unpkg.com/vue@next"></script>
 
+  <!-- CDN example (unpkg) -->
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
 </head>
 <body>
 
@@ -45,34 +48,25 @@
     
     <main class="row">
  
-        <form class="col-xs 12 col-sm-8 col-md-6 col-lg-6">
-    
-            
-            
-            <div class="form-group">
+      <p id= "pText">
 
-                <h1>About Me</h1>
+        <ul id="random" style="list-style-type:none;">
+              <p v-for="offer">
+                  <li><a v-bind:href="person.picture.large"  target="_blank"><img v-bind:src="person.picture.large"/> <p id="urlLink">{{ person.picture.large }}</p></a></li>
+                  <li>Name: {{ person.name.first }} {{ person.name.last }}</li>
+                  <li>Country of Origin: {{ person.location.country }} </li>
+                  <li>Birthdate: {{ prettyBirthday }}</li>
+                  <li>Age: {{ person.dob.age }}</li>
+                  <li>Email Address: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</li>
+                </p>
+        </ul>
+      
+      </p>
 
-                    <a href="img/face_pic.jpg" target="_blank"><img src="img/face_pic.jpg" alt="random face" width="100"></a>
-                    <Cite>Randomuser.me</Cite>
+      <form class="Reload" v-on:submit.prevent="fetchUserData">
+        <button type="submit">Reload</button>
+      </form>
 
-                <br>
-                <br>
-
-                <textarea class="form-control" id="my_Details" rows="5" readonly>
-Name: Mr. James Smith
-DOB: 5/2/1960
-Age: 61
-Country: USA
-                  </textarea>
-
-                  <br>
-                 
-                  <a href="mailto:js1984@gmail.com" target="_blank" class="btn btn-danger">Email: js1984@gmail.com</a>
-
-            </div>
-       
-        </form>    
     </main>
 
     <footer>
@@ -84,7 +78,9 @@ Country: USA
   <!--  Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
-  <script src="js/index.js"></script>
+  <script src="js/randomuser.js"></script>
+
+  <script>dayjs().format()</script>
 
 </body>
 </html>
