@@ -48,20 +48,18 @@
     
     <main class="row">
  
-      <p id= "pText">
-
+      <div v-if="person">
         <ul id="random" style="list-style-type:none;">
-              <p v-for="offer">
-                  <li><a v-bind:href="person.picture.large"  target="_blank"><img v-bind:src="person.picture.large"/> <p id="urlLink">{{ person.picture.large }}</p></a></li>
-                  <li>Name: {{ person.name.first }} {{ person.name.last }}</li>
-                  <li>Country of Origin: {{ person.location.country }} </li>
-                  <li>Birthdate: {{ prettyBirthday }}</li>
-                  <li>Age: {{ person.dob.age }}</li>
-                  <li>Email Address: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</li>
-                </p>
+            <div v-for="offer">
+                <li><a v-bind:href="person.picture.large" target="_blank"><img v-bind:src="person.picture.large"/><cite>{{ person.picture.large }}</cite></a></li>
+                <li>Name: {{ person.name.first }} {{ person.name.last }}</li>
+                <li>Country of Origin: {{ person.location.country }} </li>
+                <li>Birthdate: {{ prettyBirthday }}</li>
+                <li>Age: {{ person.dob.age }}</li>
+                <li>Email Address: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</li>
+            </div>
         </ul>
-      
-      </p>
+      </div>
 
       <form class="Reload" v-on:submit.prevent="fetchUserData">
         <button type="submit">Reload</button>
