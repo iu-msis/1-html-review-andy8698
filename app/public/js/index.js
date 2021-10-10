@@ -1,10 +1,10 @@
-
 const SomeApp = {
     data() {
       return {
         students: [],
         selectedStudent: null,
-        offers: []
+        offers: [],
+        book_tables: []
       }
     },
     computed: {},
@@ -25,6 +25,28 @@ const SomeApp = {
             this.offers = [];
             this.fetchOfferData(this.selectedStudent);
         },
+
+        
+        selectTable(s) {
+            if (s == this.selectedTable) {
+                return;
+            }
+            this.selectedTable = s;
+            this.book_tables = [];
+            this.fetchTableData(this.selectedTable);
+        },
+        fetchTableData() {
+            fetch('/api/book_table/')
+            .then( response => response.json() )
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.book_tables = responseJson;
+            })
+            .catch( (err) => {
+                console.error(err);
+            })
+        },
+
         fetchStudentData() {
             fetch('/api/student/')
             .then( response => response.json() )
@@ -54,6 +76,7 @@ const SomeApp = {
     },
     created() {
         this.fetchStudentData();
+        this.fetchTableData();
     }
   
   }

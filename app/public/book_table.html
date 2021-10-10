@@ -8,6 +8,7 @@
  <!-- CSS -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
  <link href="css/site.css" rel="stylesheet" type="text/css">
+ 
 
   <title>Books</title>
   
@@ -44,11 +45,10 @@
     </nav>
     
     <main class="row">
-
-        <div class="col-xs-12">
-                
+      
+          <div id="offerApp" class="container">  
             <table class="table table-bordered table-hover table-striped table-condensed" id="table_form">
-            
+              
                 <thead id="table_head">
                     <tr>
                         <th>Title</th>
@@ -61,47 +61,22 @@
                 </thead>
                 
                 <tbody>
-                    <tr>
-                        <td>Harry Potter and the Sorcerer's Stone</td>
-                        <td>J.K. Rowling</td>
-                        <td>1998</td>
-                        <td>Scholastic</td>
-                        <td>309</td>
-                        <td>$6.98</td>
-                    </tr>
-
-                    <tr>
-                        <td>The Hobbit</td>
-                        <td>J. R. R. Tolkien</td>
-                        <td>1937</td>
-                        <td>Recorded Books</td>
-                        <td>310</td>
-                        <td>$7.63</td>
-                    </tr>
-
-                    <tr>
-                        <td>Ender's Game</td>
-                        <td>Orson Scott</td>
-                        <td>1985</td>
-                        <td>Tor Teen</td>
-                        <td>384</td>
-                        <td>$9.34</td>
-                    </tr>
-
-                    <tr>
-                        <td>Fahrenheit 451</td>
-                        <td>Ray Bradbury</td>
-                        <td>1953</td>
-                        <td>Simon & Schuster</td>
-                        <td>249</td>
-                        <td>$8.29</td>
-                    </tr>
-                    
+                  <tr v-for="book_table in book_tables">
+       
+                    <td>{{ book_table.Title }}</td>
+                    <td>{{ book_table.Author }}</td>
+                    <td>{{ book_table.Year_Published }}</td>
+                    <td>{{ book_table.Publisher }}</td>
+                    <td>{{ book_table.Page_Count }}</td>
+                    <td>{{ book_table.MSRP }}</td>
+                  </tr>
                 </tbody>
             </table>
-            </div>
 
-            <form class="col-xs 12 col-sm-8 col-md-8 col-lg-10">
+          </div>
+
+          
+            <form class="">
               <div class="form-group">
                 <label for="book_title">Title:</label><br>
                 <input type="text" id="book_title" name="book_title"><br>
@@ -118,8 +93,10 @@
                 <input type="submit" value="Submit">
               </div>
             </form>
-
+          
     </main>
+
+
 
     <footer>
         <span>Copyright© 2021 MSIS Red Cohort</span>
