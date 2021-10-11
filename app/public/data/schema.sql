@@ -33,21 +33,30 @@ INSERT INTO offer(id, studentId, companyName, salary, bonus, offerDate) VALUES
   (3, 2, 'IU, ISGP', 54000, 0, '2021-10-05'),
   (4, 3, 'Amazon', 122000, 11000, '2021-10-15')
 ;
-drop table if exists book_table;
-
-create table book_table (Title VARCHAR(24), Author VARCHAR(24), Year_Published INTEGER, Publisher VARCHAR(24), 
-Page_Count INTEGER, MSRP VARCHAR(24));
-
-
-insert into book_table (Title, Author, Year_Published, Publisher, Page_Count, MSRP) values
-('Harry Potter and the Sorcerers Stone', 'J.K. Rowling', 1998, 'Scholastic', 309, '$6.98'),
-('The Hobbit', 'J. R. R. Tolkien', 1937, 'Recorded Books', 310, '$7.63'),
-('Enders Game', 'Orson Scott', 1985, 'Tor Teen', 384, '$9.34'),
-('Fahrenheit 451', 'Ray Bradbury', 1953, 'Simon & Schuster', 249, '$8.49'),
-('Intro to Comoputing', 'testing', 2020, 'IU', 350, '$199.99');
 
 -- COMMIT;
 
 -- CREATE USER 'msisreader'@'%' IDENTIFIED BY 'msisreadonly';
 -- GRANT SELECT ON * . * TO 'msisreader'@'%';
+
+
+
+drop table if exists book_table;
+
+create table book_table (
+	Title VARCHAR(48), 
+	Author VARCHAR(24), 
+	Year_Published INTEGER, 
+	Publisher VARCHAR(24), 
+	Page_Count INTEGER, 
+	MSRP FLOAT
+);
+
+
+insert into book_table (Title, Author, Year_Published, Publisher, Page_Count, MSRP) values
+('Harry Potter and the Sorcerers Stone', 'J.K. Rowling', 1998, 'Scholastic', 309, 6.98),
+('The Hobbit', 'J. R. R. Tolkien', 1937, 'Recorded Books', 310, 7.63),
+('Enders Game', 'Orson Scott', 1985, 'Tor Teen', 384, 9.34),
+('Fahrenheit 451', 'Ray Bradbury', 1953, 'Simon & Schuster', 249, 8.49);
+
 

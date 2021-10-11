@@ -4,7 +4,9 @@ const SomeApp = {
         students: [],
         selectedStudent: null,
         offers: [],
-        book_tables: []
+        selectedTable: null,
+        book_tables: [],
+        book_form: {}
       }
     },
     computed: {},
@@ -27,11 +29,11 @@ const SomeApp = {
         },
 
         
-        selectTable(s) {
-            if (s == this.selectedTable) {
+        selectTable(t) {
+            if (t == this.selectedTable) {
                 return;
             }
-            this.selectedTable = s;
+            this.selectedTable = t;
             this.book_tables = [];
             this.fetchTableData(this.selectedTable);
         },
@@ -71,6 +73,23 @@ const SomeApp = {
             })
             .catch( (error) => {
                 console.error(error);
+            });
+        },
+        postNewBook(evt) {
+            console.log("Posting!", this.book_form);
+
+            fetch('api/book_table/create.php', {
+                method:'POST',
+                body: JSON.stringify(this.book_form),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then( json => {
+                console.log("Returned from post:", json);
+                this.book_tables = json;
+                this.book_form = {};
             });
         }
     },
