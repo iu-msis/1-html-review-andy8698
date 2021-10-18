@@ -75,6 +75,34 @@ const SomeApp = {
                 console.error(error);
             });
         },
+        postTable(evt) {
+            console.log ("Test:", this.selectedTable);
+            if (this.selectedTable) {
+                this.postEditTable(evt);
+            } else {
+                this.postNewBook(evt);
+            }
+        },
+        postEditTable(evt) {
+            console.log("Editing!", this.book_form);
+    
+            fetch('api/book_table/update.php', {
+                method:'POST',
+                body: JSON.stringify(this.book_form),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.book_tables = json;
+                
+                // reset the form
+                this.handleResetEdit();
+              });
+        },
         postNewBook(evt) {
             console.log("Posting!", this.book_form);
 
@@ -89,12 +117,19 @@ const SomeApp = {
             .then( json => {
                 console.log("Returned from post:", json);
                 this.book_tables = json;
-                this.book_form = {};
+                this.handleResetEdit();
             });
+        },
+        handleEditTable(book_table) {
+            this.selectedTable = book_table;
+            this.book_form = Object.assign({}, this.selectedTable);
+        },
+        handleResetEdit() {
+            this.selectedTable = null;
+            this.book_form = {};
         }
     },
     created() {
-        this.fetchStudentData();
         this.fetchTableData();
     }
   
