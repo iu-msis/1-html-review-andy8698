@@ -121,7 +121,7 @@ const SomeApp = {
             });
         },
         postDeleteBook(o) {
-            if ( !confirm("Are you sure you want to delete the offer from " + o.bookName + "?") 
+            if ( !confirm("Are you sure you want to delete the book from " + o.Title + "?") 
                ) {
                 return;
             }
