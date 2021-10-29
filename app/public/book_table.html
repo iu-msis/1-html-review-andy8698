@@ -78,27 +78,27 @@
           <form v-on:submit.prevent="postTable" class="col-xs 12 col-sm-8 col-md-6 col-lg-6">
             <div class="mb-3">
               <label for="Title" class="form-label">Title:</label>
-              <input type="text" v-model="book_form.Title" class="form-control" id="Title">
+              <input type="text" v-model="book_form.Title" class="form-control" id="Title" required="required">
             </div>
             <div class="mb-3">
               <label for="Author" class="form-label">Author:</label>
-              <input type="text" v-model="book_form.Author" class="form-control" id="Author">
+              <input type="text" v-model="book_form.Author" class="form-control" id="Author" required="required">
             </div>
             <div class="mb-3">
               <label for="Year_Published" class="form-label">Year Published:</label>
-              <input type="number" v-model="book_form.Year_Published" class="form-control" id="Year_Published">
+              <input type="number" v-model="book_form.Year_Published" class="form-control" id="Year_Published" required="required">
             </div>
             <div class="mb-3">
               <label for="Publisher" class="form-label">Publisher:</label>
-              <input type="text" v-model="book_form.Publisher" class="form-control" id="Publisher">
+              <input type="text" v-model="book_form.Publisher" class="form-control" id="Publisher" required="required">
             </div>
             <div class="mb-3">
               <label for="Page_Count" class="form-label">Page Count:</label>
-              <input type="number" v-model="book_form.Page_Count" class="form-control" id="Page_Count">
+              <input type="number" v-model="book_form.Page_Count" class="form-control" id="Page_Count" required="required">
             </div>
             <div class="mb-3">
               <label for="MSRP" class="form-label">MSRP:</label>
-              <input type="text" v-model="book_form.MSRP" class="form-control" id="MSRP">
+              <input type="text" v-model="book_form.MSRP" class="form-control" id="MSRP" required="required">
             </div>
             <button type="submit" class="btn btn-light">{{ selectedTable === null ? "Add " : "Edit " }} Book</button>
             <button type="button" class="btn btn-outline-secondary" 
